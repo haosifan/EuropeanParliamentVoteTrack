@@ -1,0 +1,19 @@
+<PV.RollCallVoteResults Sitting.Identifier="0000" Sitting.Date="YYYY-MM-DD" EP.Reference="P8_PV(2018)07-05" EP.Number="PE 624.848">
+	<RollCallVote.Result Identifier="93002" Date="2018-07-05 12:05:11">
+			<RollCallVote.Description.Text>RC-B8-0322/2018 - Résolution</RollCallVote.Description.Text>
+			<Result.For Number="999">
+				<Result.PoliticalGroup.List Identifier="ALDE">
+					<PoliticalGroup.Member.Name MepId="0001">MEP A </PoliticalGroup.Member.Name>
+					<PoliticalGroup.Member.Name MepId="0002">MEP B</PoliticalGroup.Member.Name>
+				</Result.PoliticalGroup.List>
+				<Result.PoliticalGroup.List Identifier="ECR">
+					<PoliticalGroup.Member.Name MepId="0003">MEP C</PoliticalGroup.Member.Name>
+					<PoliticalGroup.Member.Name MepId="0004">MEP D</PoliticalGroup.Member.Name>
+				</Result.PoliticalGroup.List>
+			</Result.For>
+			<Result.Against Number="999">
+				...
+				...
+			</Result.Against>
+	</RollCallVote.Result>
+</PV.RollCallVoteResults>
