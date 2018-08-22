@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 misc/
-.pdf
-.docx
+*.pdf
+*.docx
