@@ -4,8 +4,10 @@ url <- "http://www.europarl.europa.eu/RegistreWeb/search/simple.htm?codeTypeDocu
 
 links <- read_html(url) %>% 
   html_nodes("[class=\"results\"]") %>% 
-  html_nodes("a") %>% 
+  html_nodes("a") %>%
   html_attr("href")
 
 
-read_html(url) %>% html_nodes(xpath = "//*[contains(concat( \" \", @class, \" \" ), concat( \" \", \"reference\", \" \" ))]")
+
+#read_html(url) %>% 
+#  html_nodes(xpath = "//*[contains(concat( \" \", @class, \" \" ), concat( \" \", \"reference\", \" \" ))]")
