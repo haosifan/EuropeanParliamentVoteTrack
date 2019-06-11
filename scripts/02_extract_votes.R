@@ -5,9 +5,9 @@ library(tidyverse)
 library(data.table)
 
 
-url <- "http://www.europarl.europa.eu/RegData/seance_pleniere/proces_verbal/2018/07-05/liste_presence/P8_PV(2018)07-05(RCV)_XC.xml"
+xml <- "http://www.europarl.europa.eu/RegData/seance_pleniere/proces_verbal/2018/07-05/liste_presence/P8_PV(2018)07-05(RCV)_XC.xml"
 # Parse the XML file
-xmlfile <- read_xml(url, 
+xmlfile <- read_xml(xml, 
                     encoding = "UTF-8")
 
 l_meps <- xml_find_all(xmlfile, ".//*[name()='PoliticalGroup.Member.Name']")
