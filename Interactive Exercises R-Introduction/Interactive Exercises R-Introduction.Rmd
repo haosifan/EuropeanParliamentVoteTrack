@@ -1,0 +1,209 @@
+---
+title: "Exercises R-Introduction"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Basics
+
+### Übung 1
+
+*Wir beginnen mit ein paar kleinen Übungen zu den grundlegenden Basis-Befehlen und den Umgang mit R*
+
+Schreibe einen Code, der den Objekten `x1` und `x2` die Werte 3 und 7 zuweist.
+
+```{r create-objects, exercise=TRUE, exercise.eval = TRUE}
+
+```
+
+```{r create-objects-solution}
+x1 <- 3
+x2 <- 7
+```
+
+```{r}
+x1 <- 3
+x2 <- 7
+```
+
+
+Addiere die beiden Objekte miteinander.
+
+```{r addieren, exercise = TRUE, exercise.eval = TRUE}
+
+```
+
+Teste, von welcher `class` das Objekt `x1` ist.
+
+```{r class-test, exercise = TRUE, exercise.eval = TRUE}
+
+```
+
+Verknüpfe die beiden Objekte (`x1`,`x2`) zu einem `Vektor` und lasse ihn ausgeben. Der Vektor soll den Namen `d1` haben.
+
+```{r concatenate, exercise = TRUE, exercise.eval = TRUE}
+
+```
+
+```{r concatenate-solution}
+d1 <- c(x1,x2)
+d1
+```
+
+<div id="concatenate-hint">
+**Hint:** Die Bedeutung des gesuchten Befehls ist `concatenate`. Allerdings stark abgekürzt.
+</div>
+
+
+Es gibt jetzt zwei Vektoren `d2` und `d3`, die jeweils 5 numerische Elemente enthalten. Lasst euch die statistischen Kennwerte wie Mittelwert, Maximum, Minimum etc. ausgeben.
+```{r}
+d2 <- c(x1^1,x1^2,x1^3,x1^4,x1^5)
+d3 <- c(x2^1,x2^2,x2^3,x2^4,x2^5)
+```
+
+
+```{r summary, exercise=TRUE, exercise.eval = TRUE}
+
+```
+
+```{r summary-solution}
+summary(d2)
+summary(d3)
+```
+
+## Funktionen
+
+### Übung 2
+
+Funktionen habt ihr bereits kennen gelernt. Die Aufgabe ist nun, eine eigene Funktion zu schreiben, die den Body-Mass-Index berechnet. Der Body-Mass-Index hat die Formel: $$bmi = m/l^2$$ Dabei ist $m$ das Körpergewicht in kg und $l$ die Körpergröße in m.
+
+Vorher müssen aber auch noch die Daten vorbereitet werden.
+
+Im eurem Workspace gibt es zwei Objekte `l` und `m`. Dort sind jeweils 20 Elemente enthalten, welche die Körpergröße und das Gewicht von 20 fiktiven Personen enthalten. Die Werte werden folgendermaßen erstellt.
+
+```{r echo = TRUE}
+set.seed(1904)
+l <- sample(155:210, size = 20, replace = TRUE)
+m <- round(runif(n = 20, min = 50, max = 110),1)
+```
+
+Lasst euch diese beiden Objekte ausgeben und anschließend NUR den Mittelwert der einzelnen Objekte anzeigen.
+
+```{r show-bmidata, exercise = TRUE}
+
+```
+
+```{r show-bmidata-solution}
+l
+m
+
+mean(l)
+mean(m)
+```
+
+
+Macht aus beiden Objekten einen data.frame mit dem Namen `bmi_data`, der als Spalten die Werte aus `m` und `l` enthält. Lasst ihn anschließend ausgeben.
+
+```{r makedf, exercise = TRUE}
+bmi_data <-
+bmi_data
+```
+
+```{r makedf-solution}
+bmi_data <- data.frame(m,l)
+bmi_data
+```
+
+Nun geht es an die Programmierung der Funktion. Eine Funktion hat (fast) immer verschiedene Input-Variablen und gibt dann etwas zurück. In unserem Fall muss der Funktion die Körpergröße und das Gewicht übergeben werden. Durch `return()` wird festgelegt, welcher Wert zurückgegeben wird.
+
+```{r bmi-function, exercise = TRUE, exercise.eval = TRUE}
+bmi <- function(){
+  
+  
+}
+```
+
+
+```{r bmi-function-hint-1}
+bmi <- function(m,l) {
+
+}
+```
+
+```{r bmi-function-hint-2}
+bmi <- function(m,l) {
+  bmi <- 
+  
+}
+```
+
+```{r bmi-function-hint-3}
+bmi <- function(m,l) {
+  bmi <- 
+  return()
+}
+```
+
+
+```{r bmi-function-solution}
+bmi <- function(m,l) {
+  bmi <- m/l^2
+  return(bmi)
+}
+```
+
+Versucht nun einfach 2 Zahlen in die Funktion einzusetzen. Dabei wird die Funktion wie ein "normaler" R-Befehl genutzt.
+Es ist egal, ob ihr nur die Zahlen eingebt oder die Parameter mit angebt (`x = 76`). Wenn die Parameter nicht genau angegeben werden, muss allerdings die Reihenfolge stimmen.
+
+```{r}
+bmi <- function(m,l) {
+  bmi <- m/l^2
+  return(bmi)
+}
+```
+
+```{r bmi-calculation1, exercise = TRUE}
+
+
+```
+
+```{r bmi-calculation1-hint-1}
+bmi(... , ...)
+```
+
+Vergleicht die Werte mit der untenstehenden Tabelle. Was fällt euch auf und wo liegt der Fehler?
+
+| Kategorie | BMI (kg/m²)| 
+|:----------------------|--------------:|
+| Starkes Untergewicht  | < 16| 
+| Mäßiges Untergewicht  | 16 - < 17| 
+| Leichtes Untergewicht  | 17 - < 18,5| 
+| Normalgewicht  | 18,5 - < 25| 
+| Präadipositas  | 25 - < 30| 
+| Adipositas Grad I  | 30 - < 35 | 
+| Adipositas Grad II  | 35 - < 40| 
+| Adipositas Grad III  | >= 40 | 
+
+Korrigiert den Fehler, indem ihr die Werte im dataframe `bmi_data` verändert und wendet dann den gesamten Datensatz auf die Funktion an.
+
+```{r bmi_neu, exercise = TRUE}
+...
+
+bmi(m = bmi_data$m, l = bmi_data$l)
+```
+
+<div id="bmi_neu-hint">
+**Hint:** Wie beim Aufruf der Funktion zu sehen, könnt ihr in einem Dataframe die Spalten per Namen ansprechen. Diese können verändert werden, es kann mit ihnen gerechnet werden und sie können auch neu zugewiesen werden.
+</div>
+
+```{r bmi_neu-solution}
+bmi_data$l <- bmi_data$l/100
+bmi(m = bmi_data$m, l = bmi_data$l)
+```
+
